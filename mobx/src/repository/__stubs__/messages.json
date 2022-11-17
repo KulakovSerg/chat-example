@@ -1,5 +1,146 @@
-{
-    "c1": [
-        
-    ]
-}
+[
+    {
+        "id": "m1",
+        "text": "Message 1",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:01:23.642Z'",
+        "chatId": "c1"
+    },
+    {
+        "id": "m2",
+        "text": "Message 2",
+        "direction": "OUTCOMING",
+        "status": "DELIVERED",
+        "time": "'2022-11-16T17:02:23.642Z'",
+        "chatId": "c1"
+    },
+    {
+        "id": "m3",
+        "text": "Message 3",
+        "direction": "INCOMING",
+        "status": "SENT",
+        "time": "'2022-11-16T17:03:23.642Z'",
+        "chatId": "c1"
+    },
+    {
+        "id": "m4",
+        "text": "Message 4",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:04:23.642Z'",
+        "chatId": "c2"
+    },
+    {
+        "id": "m5",
+        "text": "Message 5",
+        "direction": "OUTCOMING",
+        "status": "DELIVERED",
+        "time": "'2022-11-16T17:05:23.642Z'",
+        "chatId": "c2"
+    },
+    {
+        "id": "m6",
+        "text": "Message 6",
+        "direction": "INCOMING",
+        "status": "SENT",
+        "time": "'2022-11-16T17:06:23.642Z'",
+        "chatId": "c2"
+    },
+    {
+        "id": "m7",
+        "text": "Message 7",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:07:23.642Z'",
+        "chatId": "c3"
+    },
+    {
+        "id": "m8",
+        "text": "Message 8",
+        "direction": "OUTCOMING",
+        "status": "DELIVERED",
+        "time": "'2022-11-16T17:08:23.642Z'",
+        "chatId": "c3"
+    },
+    {
+        "id": "m9",
+        "text": "Message 9",
+        "direction": "INCOMING",
+        "status": "SENT",
+        "time": "'2022-11-16T17:09:23.642Z'",
+        "chatId": "c3"
+    },
+    {
+        "id": "m10",
+        "text": "Message 10",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:10:23.642Z'",
+        "chatId": "c4"
+    },
+    {
+        "id": "m11",
+        "text": "Message 11",
+        "direction": "OUTCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:11:23.642Z'",
+        "chatId": "c4"
+    },
+    {
+        "id": "m12",
+        "text": "Message 12",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:12:23.642Z'",
+        "chatId": "c4"
+    },
+    {
+        "id": "m13",
+        "text": "Message 13",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:13:23.642Z'",
+        "chatId": "c5"
+    },
+    {
+        "id": "m14",
+        "text": "Message 14",
+        "direction": "OUTCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:14:23.642Z'",
+        "chatId": "c5"
+    },
+    {
+        "id": "m15",
+        "text": "Message 15",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:15:23.642Z'",
+        "chatId": "c5"
+    },
+    {
+        "id": "m16",
+        "text": "Message 16",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:16:23.642Z'",
+        "chatId": "c6"
+    },
+    {
+        "id": "m17",
+        "text": "Message 17",
+        "direction": "OUTCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:17:23.642Z'",
+        "chatId": "c6"
+    },
+    {
+        "id": "m18",
+        "text": "Message 18",
+        "direction": "INCOMING",
+        "status": "READ",
+        "time": "'2022-11-16T17:18:23.642Z'",
+        "chatId": "c6"
+    }
+]

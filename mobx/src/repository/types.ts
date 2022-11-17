@@ -1,6 +1,7 @@
-import type { Message, Chat } from "../store/types";
+import type { Message, Chat } from "../type";
 
 export interface Repository {
   getMessages: (chatId: string) => Promise<Message[]>;
-  getChats: () => Promise<Chat[]>;
+  getActiveChats: () => Promise<Chat[]>;
+  getArchiveChats: () => Promise<Chat[]>;
 }

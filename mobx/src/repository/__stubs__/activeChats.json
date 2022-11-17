@@ -1,9 +1,9 @@
 [
     {
-        "id": "c1", 
-       "title": "Chat 1",
-       "status": "ACTIVE",
-       "unreadMessages": 0
+        "id": "c1",
+        "title": "Chat 1",
+        "status": "ACTIVE",
+        "unreadMessages": 1
     },
     {
         "id": "c2",
@@ -15,6 +15,6 @@
         "id": "c3",
         "title": "Chat 3",
         "status": "ACTIVE",
-        "unreadMessages": 2
+        "unreadMessages": 1
     }
 ]
