@@ -1,16 +1,24 @@
-import React from "react";
-import { Message } from "../Message";
-import type { FC } from "react";
-import type { Message as MessaageType } from "../../type";
+import { observer } from 'mobx-react';
+import type { FC } from 'react';
+import React from 'react';
 
-export const MessagesList: FC<{ messages: MessaageType[] }> = ({
-  messages,
-}) => {
-  return (
-    <div>
-      {messages.map((message) => (
-        <Message {...message} />
+import { useStore } from '../../hooks';
+import type { ChatWithMessages } from '../../type';
+import { Message } from '../Message';
+import { MessagesListLoading } from './MessagesListLoading';
+import { MessagesListView } from './MessagesListView';
+
+export const MessagesList: FC = observer(() => {
+  const { messagesLoading, getChat, selectedChatId } = useStore();
+  const { messages } = (getChat(selectedChatId) || {}) as ChatWithMessages;
+
+  return messagesLoading || !selectedChatId || !messages ? (
+    <MessagesListLoading />
+  ) : (
+    <MessagesListView>
+      {Array.from(messages.keys()).map((id) => (
+        <Message id={id} chatId={selectedChatId} key={id} />
       ))}
-    </div>
+    </MessagesListView>
   );
-};
+});

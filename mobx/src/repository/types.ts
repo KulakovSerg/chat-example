@@ -1,4 +1,4 @@
-import type { Message, Chat } from "../type";
+import type { Chat, Message } from '../type';
 
 export interface Repository {
   getMessages: (chatId: string) => Promise<Message[]>;

@@ -1,19 +1,17 @@
-import { makeAutoObservable, runInAction } from "mobx";
-import { Chat } from "../components/Chat";
-import type { Repository } from "../repository";
-import { ChatId, Chats, ChatWithMessages, Message, MessageId } from "../type";
+import { makeAutoObservable, runInAction } from 'mobx';
 
-export class Store {
+import type { Repository } from '../repository';
+import type { ChatId, Chats, Message, MessageId, Messages } from '../type';
+import type { StoreInterface } from './types';
+
+export class Store implements StoreInterface {
   chats: Chats = new Map();
+  messages: Messages = new Map();
   chatsLoading!: boolean;
   messagesLoading!: boolean;
-  activeChat!: ChatId;
   isArchive!: boolean;
   repository: Repository;
-
-  get chatKeys() {
-    return Array.from(this.chats.keys());
-  }
+  selectedChatId!: string;
 
   constructor(repository: Repository) {
     this.repository = repository;
@@ -22,12 +20,8 @@ export class Store {
 
   start = async () => {
     await this.getChats();
-    this.switchChat(this.chats.values().next().value.id);
-  };
-
-  switchChat = (chatId: ChatId) => {
-    this.activeChat = chatId;
-    this.getMessages(this.activeChat);
+    const firstChatId = this.chats.values().next().value.id;
+    setTimeout(() => this.selectChat(firstChatId), 0);
   };
 
   getChats = async () => {
@@ -70,7 +64,27 @@ export class Store {
     }
   };
 
-  getChat = (id: ChatId) => {
-    return this.chats.get(id);
+  getChat = (chatId: ChatId) => {
+    return this.chats.get(chatId);
+  };
+
+  getMessage = (chatId: ChatId, messageId: MessageId) => {
+    return this.chats.get(chatId)?.messages?.get(messageId);
+  };
+
+  selectChat = (id: ChatId) => {
+    if (id !== this.selectedChatId) {
+      const oldChat = this.getChat(this.selectedChatId);
+      if (oldChat) {
+        oldChat.isActive = false;
+      }
+
+      const newChat = this.getChat(id);
+      if (newChat) {
+        newChat.isActive = true;
+        this.getMessages(id);
+        this.selectedChatId = id;
+      }
+    }
   };
 }

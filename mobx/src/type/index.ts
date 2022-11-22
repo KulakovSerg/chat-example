@@ -1,19 +1,19 @@
 export enum MessageStatus {
-  SENDING = "SENDING",
-  SENT = "SENT",
-  DELIVERED = "DELIVERED",
-  READ = "READ",
-  NOT_SENT = "NOT_SENT",
+  SENDING = 'SENDING',
+  SENT = 'SENT',
+  DELIVERED = 'DELIVERED',
+  READ = 'READ',
+  NOT_SENT = 'NOT_SENT',
 }
 
 export enum MessageDirection {
-  INCOMING = "INCOMING",
-  OUTCOMING = "OUTCOMING",
+  INCOMING = 'INCOMING',
+  OUTCOMING = 'OUTCOMING',
 }
 
 export enum ChatStatus {
-  ACTIVE = "ACTIVE",
-  ARCHIVE = "ARCHIVE",
+  ACTIVE = 'ACTIVE',
+  ARCHIVE = 'ARCHIVE',
 }
 
 export type MessageId = string;
@@ -29,11 +29,14 @@ export type Message = {
   chatId: ChatId;
 };
 
+export type Messages = Map<MessageId, Message>;
+
 export type Chat = {
   id: ChatId;
   title: string;
   status: ChatStatus;
   unreadMessages: number;
+  isActive: boolean;
 };
 
 export type Chats = Map<ChatId, ChatWithMessages>;

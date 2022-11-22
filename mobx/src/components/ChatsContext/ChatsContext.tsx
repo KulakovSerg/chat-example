@@ -1,15 +1,14 @@
-import React, { useMemo, createContext, PropsWithChildren } from "react";
-import type { FC } from "react";
-import { Store } from "../../store";
-import { AjsxRepository } from "../../repository";
+import type { FC, PropsWithChildren } from 'react';
+import React, { createContext, useMemo } from 'react';
+
+import { MockRepository } from '../../repository';
+import { Store } from '../../store';
 
 export const ChatsContext = createContext<Store | null>(null);
 
 export const ChatsContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const repository = useMemo(() => new AjsxRepository(), []);
-  const store = useMemo(() => new Store(repository), []);
+  const repository = useMemo(() => new MockRepository(), []);
+  const store = useMemo(() => new Store(repository), [repository]);
 
-  return (
-    <ChatsContext.Provider value={store}>{children}</ChatsContext.Provider>
-  );
+  return <ChatsContext.Provider value={store}>{children}</ChatsContext.Provider>;
 };

@@ -1,13 +1,36 @@
-import React from "react";
-import type { FC } from "react";
-import type { Chat as ChatType, ChatId } from "../../type";
+/* eslint-disable simple-import-sort/imports */
+import React, { useCallback } from 'react';
+import { Card, CardContent, ButtonGroup, Button, Typography, useTheme } from '@mui/material';
 
-export const ChatView: FC<{
-  chat: ChatType;
-}> = ({ chat: { title, status, unreadMessages } }) => (
-  <div>
-    <div>{title}</div>
-    <div>{status}</div>
-    <div>{unreadMessages}</div>
-  </div>
-);
+import type { FC } from 'react';
+import type { Chat as ChatType, ChatId } from '../../type';
+
+export const ChatView: FC<
+  Pick<ChatType, 'title' | 'status' | 'unreadMessages' | 'id' | 'isActive'> & {
+    selectChat: (id: ChatId) => void;
+  }
+> = ({ id, title, status, unreadMessages, isActive, selectChat }) => {
+  const theme = useTheme();
+  const clickHandler = useCallback(() => selectChat(id), [selectChat, id]);
+  return (
+    <Card
+      sx={{
+        maxWidth: 275,
+        marginBottom: 1,
+        backgroundColor: isActive ? theme.palette.grey[300] : null,
+        cursor: 'pointer',
+      }}
+      onClick={clickHandler}
+    >
+      <CardContent>
+        <Typography variant="h5" component="div">
+          {title}
+        </Typography>
+        <ButtonGroup variant="outlined" aria-label="outlined button group" size="small">
+          <Button>{status}</Button>
+          <Button>{unreadMessages}</Button>
+        </ButtonGroup>
+      </CardContent>
+    </Card>
+  );
+};

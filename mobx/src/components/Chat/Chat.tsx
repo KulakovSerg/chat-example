@@ -1,16 +1,23 @@
-import React from "react";
-import { useStore } from "../../hooks";
-import { observer } from "mobx-react";
-import { ChatView } from "./ChatView";
+import { observer } from 'mobx-react';
+import type { FC } from 'react';
+import React from 'react';
 
-import type { FC } from "react";
-import type { Chat as ChatType, ChatId } from "../../type";
+import { useStore } from '../../hooks';
+import type { Chat as ChatType, ChatId } from '../../type';
+import { ChatView } from './ChatView';
 
-const ChatObserver = observer(ChatView);
+export const Chat: FC<{ id: ChatId }> = observer(({ id }) => {
+  const { getChat, selectChat } = useStore();
+  const { title, status, unreadMessages, isActive } = getChat(id) as ChatType;
 
-export const Chat: FC<{ id: ChatId }> = ({ id }) => {
-  const { getChat } = useStore();
-  const chat = getChat(id) as ChatType;
-
-  return <ChatObserver chat={chat} />;
-};
+  return (
+    <ChatView
+      id={id}
+      title={title}
+      status={status}
+      unreadMessages={unreadMessages}
+      isActive={isActive}
+      selectChat={selectChat}
+    />
+  );
+});

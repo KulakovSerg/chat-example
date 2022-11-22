@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { ChatsContext } from "../components/ChatsContext";
+import { ChatsContext } from '../components/ChatsContext';
+import type { Store, StoreInterface } from '../store';
 
-import { Store } from "../store";
+export const useStore = (): StoreInterface => {
+  const store = useContext(ChatsContext) as Store;
 
-export const useStore = (): Store => {
-  const store = useContext(ChatsContext);
-
-  return store!;
+  return store;
 };

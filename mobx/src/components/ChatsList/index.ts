@@ -1,1 +1,1 @@
-export * from "./ChatsList";
+export * from './ChatsList';

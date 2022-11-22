@@ -1,2 +1,2 @@
-export * from "./AjaxRepository";
-export * from "./types";
+export * from './MockRepository';
+export * from './types';

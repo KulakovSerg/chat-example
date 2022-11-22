@@ -1,35 +1,25 @@
-import React, { useEffect } from "react";
-import { observer } from "mobx-react";
+import { observer } from 'mobx-react';
+import React, { useEffect } from 'react';
 
-import { Chat } from "../Chat";
-import { useStore } from "../../hooks";
+import { useStore } from '../../hooks';
+import { Chat } from '../Chat';
+import { ChatsListLoading } from './ChatsListLoading';
+import { ChatsListView } from './ChatsListView';
 
-import type { FC } from "react";
-import type { ChatId } from "../../type";
+export const ChatsList = observer(() => {
+  const { start, chats, chatsLoading } = useStore();
 
-const ChatsObserver: FC = observer(() => {
-  const { chatKeys, chatsLoading } = useStore();
-  return chatsLoading ? (
-    <ChatsLoading />
-  ) : (
-    <>
-      {chatKeys.map((id) => (
-        <Chat id={id} key={id} />
-      ))}
-    </>
-  );
-});
-
-const ChatsLoading: FC = () => <div>Loading...</div>;
-
-export const ChatsList = () => {
-  const { start } = useStore();
   useEffect(() => {
     start();
-  }, []);
-  return (
-    <div>
-      <ChatsObserver />
-    </div>
+  }, [start]);
+
+  return chatsLoading ? (
+    <ChatsListLoading />
+  ) : (
+    <ChatsListView>
+      {Array.from(chats.keys()).map((id) => (
+        <Chat id={id} key={id} />
+      ))}
+    </ChatsListView>
   );
-};
+});
