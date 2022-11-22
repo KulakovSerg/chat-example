@@ -16,6 +16,24 @@ export class Store implements StoreInterface {
   constructor(repository: Repository) {
     this.repository = repository;
     makeAutoObservable(this, { repository: false });
+
+    repository.updateChats((update) => {
+      runInAction(() => {
+        Object.keys(update).forEach((chatId) => {
+          const chat = this.getChat(chatId);
+          this.chats.set(chatId, { ...update[chatId], messages: chat?.messages || new Map() });
+        });
+      });
+    });
+
+    repository.updateMessages((update) => {
+      runInAction(() => {
+        Object.keys(update).forEach((messageId) => {
+          const chat = this.getChat(update[messageId].chatId);
+          chat?.messages?.set(messageId, { ...update[messageId] });
+        });
+      });
+    });
   }
 
   start = async () => {
