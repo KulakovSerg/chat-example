@@ -1,3 +1,24 @@
+# TODO
+- action on update store (I was too hurry to do it well)
+- css (styled components?)
+- messages loading: style center
+- put repository to context
+- update from server: add/update chat/message, from context repository
+- update from client: add chat
+- update from client: write message
+- chat archive/active toggler
+- pagination example for chats and messages
+- context menu for messages
+- check eslint rules
+- error handling
+- error emulation
+- error boundary
+- retry request loading on error
+- (redux/saga/react-query stub)
+- tests: unit, auto mock, coverage
+- tests: integration (test-id, react-testing library)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
